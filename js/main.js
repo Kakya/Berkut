@@ -14,12 +14,15 @@ window.onload = function() {
     "use strict";
     
 
-var game = new Phaser.Game(800, 1200, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update, render: render });
+var game = new Phaser.Game(1200, 800, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update, render: render });
 
 function preload() {
 
     game.load.image('backdrop', 'assets/Night_Sky.png');
     game.load.image('card', 'assets/F-22.PNG');
+	game.load.image('eagle', 'assets/S-37.png');
+	game.load.image('bullet', 'assets/Side.png');
+	game.load.image('eabullet', 'assets/ESide.png');
 	game.load.audio('Musik', ['assets/Air Battle.ogg']);
 	game.load.audio('soundOfFreedom', ['assets/F-14 Tomcat fly by with sonic boom.wav', 'assets/F-14 Tomcat fly by with sonic boom.ogg']);
 }
@@ -27,19 +30,45 @@ function preload() {
 var card;
 var cursors;
 var music;
-
+var eagles;
+var eagle;
+var bullets;
+var fireRate = 100;
+var nextFire = 0;
+var efireRate = 100;
+var enextFire = 0;
+var eBullets;
+var killedEnemy = 0;
+var stateText;
 function create() {
 	game.physics.startSystem(Phaser.Physics.ARCADE);
     game.world.setBounds(0, 0, 2560, 1600);
     game.add.sprite(0, 0, 'backdrop');
-
     card = game.add.sprite(200, 200, 'card');
-
+	card.enableBody = true;
+	eagles = game.add.group(); 
+	eagles.enableBody = true;
     game.camera.follow(card);
 	card.anchor.setTo(0.5, 0.5);
-
+	bullets = game.add.group();
+    bullets.enableBody = true;
+    bullets.physicsBodyType = Phaser.Physics.ARCADE;
+	bullets.createMultiple(2, 'bullet');
+    bullets.setAll('checkWorldBounds', true);
+    bullets.setAll('outOfBoundsKill', true);
+	eBullets = game.add.group();
+    eBullets.enableBody = true;
+    eBullets.physicsBodyType = Phaser.Physics.ARCADE;
+	eBullets.createMultiple(2, 'eabullet');
+    eBullets.setAll('checkWorldBounds', true);
+    eBullets.setAll('outOfBoundsKill', true);
     game.physics.enable(card, Phaser.Physics.ARCADE);
-
+	for (var i = 0; i<10; i++)
+	{
+		var e = eagles.create(card.x+game.rnd.integerInRange(1000,2000), game.world.randomY, 'eagle');
+		e.anchor.setTo(0.5, 0.5);
+		game.physics.enable(e, Phaser.Physics.ARCADE);
+	}
     cursors = game.input.keyboard.createCursorKeys();
     card.body.maxAngular = 4000;
 
@@ -55,7 +84,11 @@ function create() {
 }
 
 function update() {
-
+	game.physics.arcade.collide(card, eagles);
+    game.physics.arcade.collide(eagles, eagles);
+	//game.physics.arcade.overlap(eagles, bullets, kill, null, this);
+	game.physics.arcade.overlap(bullets, eagles, explode, null, this);
+	game.physics.arcade.overlap(eBullets, card, pexplode, null, this);
     card.body.velocity.x = 0;
     card.body.velocity.y = 0;
     card.body.angularVelocity = 0;
@@ -76,12 +109,66 @@ function update() {
     {
         game.physics.arcade.velocityFromAngle(card.angle, 300, card.body.velocity);
     }
-
-    game.world.wrap(card, 0, true);
-
+	
+	game.world.wrap(card, 0, true);
+	eagles.forEach(fly, this, true);
+	if (game.input.activePointer.isDown)
+    {
+        fire();
+    }
+	eagles.forEach(enemyFires, this, true);
 }
+function fly(eagle)
+{
+	
+	eagle.body.velocity.x = game.rnd.integerInRange(-100, -300);
+	eagle.body.velocity.y = 0;
+	game.world.wrap(eagle, 0, true);
+}
+function kill(eagle)
+{
+	eagle.kill();
+}
+function explode(bullet, eagle)
+{
+	bullet.kill();
+	eagle.kill();
+	killedEnemy++;
+}
+function pexplode(bullet, card)
+{
+	bullet.kill();
+	card.kill();
+	stateText=game.addText(game.world.centerX, game.world.centerY, "You fought bravely, oh fighter pilot. \n Next time try using ECMs and stop the commies...",{ font: "20px Times New Roman", fill: "#fff", align: "center" });
+	stateText.visible = true;
+}
+function fire() 
+{
+    if (game.time.now > nextFire && bullets.countDead() > 0)
+    {
+        nextFire = game.time.now + fireRate;
 
+        var bullet = bullets.getFirstDead();
+
+        bullet.reset(card.x - 8, card.y - 8);
+		bullet.body.velocity.x=600;
+		bullet.body.velocity.y=9.8;
+    }
+}
+function enemyFires(eagle)
+{
+	if (game.time.now > enextFire && eBullets.countDead() > 0)
+    {
+        enextFire = game.time.now + efireRate;
+
+        var eBullet = eBullets.getFirstDead();
+
+        eBullet.reset(eagle.x + 8, eagle.y + 8);
+		eBullet.body.velocity.x=-600;
+		eBullet.body.velocity.y=9.8;
+    }
+}
 function render() {
-
+	game.debug.text('Planes killed: ' + killedEnemy, 32, 32);
 }
 };
