@@ -20,7 +20,7 @@ function preload() {
 
     game.load.image('backdrop', 'assets/Night_Sky.png');
     game.load.image('card', 'assets/F-22.PNG');
-	game.load.image('eagle', 'assets/S-37.png');
+	game.load.image('eagle', 'assets/S-37.PNG');
 	game.load.image('bullet', 'assets/Side.png');
 	game.load.image('eabullet', 'assets/ESide.png');
 	game.load.audio('Musik', ['assets/Air Battle.ogg']);
