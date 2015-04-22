@@ -183,6 +183,7 @@ function enemyFires(eagle)
 }
 function render() {
 	game.debug.text('Planes killed: ' + killedEnemy, 32, 32);
+	game.debug.text('Velocity: ' + velocity, 32, 52);
 	game.debug.body(card);
 }
 };
