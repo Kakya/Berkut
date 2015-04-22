@@ -47,7 +47,7 @@ function create() {
     card = game.add.sprite(200, 200, 'card');
 	card.enableBody = true;
 	//card.body.clearShapes();
-	card.body.setSize(20,20);
+	card.arcade.body.setSize(20,20,0,0);
 	eagles = game.add.group(); 
 	eagles.enableBody = true;
     game.camera.follow(card);
