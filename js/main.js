@@ -127,16 +127,16 @@ function update() {
     }
 	if (game.input.keyboard.isDown(Phaser.Keyboard.W)&&game.input.keyboard.isDown(Phaser.Keyboard.SHIFT)&&ctr < 5)
     {
+		ctr+=1;
 		if(velocity < 3100)
 		{
 			velocity += 2;
 		}
 		card.body.thrust(velocity);
-		ctr++;
     }
 	if(velocity > 0 )
 	{
-		velocity = velocity - (0.2*velocity);
+		velocity = velocity - (0.1*velocity);
 	}
 	game.world.wrap(card, 0, true);
 	eagles.forEach(fly, this, true);
