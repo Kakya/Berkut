@@ -84,7 +84,7 @@ function create() {
 }
 
 function update() {
-	game.physics.arcade.overlap(card, eagles);
+	game.physics.arcade.overlap(card, eagles, collide());
     game.physics.arcade.overlap(eagles, eagles);
 	//game.physics.arcade.overlap(eagles, bullets, kill, null, this);
 	game.physics.arcade.overlap(bullets, eagles, explode, null, this);
@@ -94,7 +94,10 @@ function update() {
     card.body.angularVelocity = 0;
 
     card.body.angularAcceleration = 0;
-
+	function collide()
+	{
+		game.physics.arcade.collide(card, eagles);
+	}
     if (game.input.keyboard.isDown(Phaser.Keyboard.A))
     {
         card.body.angularAcceleration -= 2500;
