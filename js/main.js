@@ -137,6 +137,7 @@ function update() {
 	if(ctr === 10)
 	{
 		afterReady = false;
+		cool();
 	}
 	if (game.input.keyboard.isDown(Phaser.Keyboard.W) && game.input.keyboard.isDown(Phaser.Keyboard.SHIFT)&&afterReady)
     {
@@ -153,9 +154,12 @@ function update() {
 	}
 	game.world.wrap(card, 0, true);
 	eagles.forEach(fly, this, true);
-	if(ctr > 0)
+	function cool()
 	{
-		ctr-=0.25;
+		if(ctr > 0)
+		{
+			ctr-=0.025;
+		}
 	}
 	if (ctr === 0)
 	{
@@ -221,6 +225,6 @@ function render() {
 	game.debug.body(card);
 	game.debug.text('Afterburner on for: '+ctr, 32, 92);
 	game.debug.text('Controls: W: add thrust. D,S: Roll control. Shift+W: Afterburner. Left mouse click: Fire missile.', 112,32);
-	game.debug.text('Version 33', 32, 112);
+	game.debug.text('Version 34', 32, 112);
 }
 };
