@@ -120,7 +120,7 @@ function update() {
     {
         //game.physics.arcade.velocityFromAngle(card.angle, 300, card.body.velocity);
 		card.body.thrust(velocity);
-		if(velocity < 300)
+		if(velocity < 3000)
 		{
 			velocity += 5;
 		}
