@@ -41,6 +41,7 @@ var eBullets;
 var killedEnemy = 0;
 var stateText;
 var velocity = 0;
+var ctr = 0;
 function create() {
 	game.physics.startSystem(Phaser.Physics.ARCADE);
     game.world.setBounds(0, 0, 2560, 1600);
@@ -118,28 +119,25 @@ function update() {
 
     if (game.input.keyboard.isDown(Phaser.Keyboard.W))
     {
-        //game.physics.arcade.velocityFromAngle(card.angle, 300, card.body.velocity);
 		card.body.thrust(velocity);
 		if(velocity < 3000)
 		{
 			velocity += 1;
 		}
     }
-	if (game.input.keyboard.isDown(Phaser.Keyboard.W)&&game.input.keyboard.isDown(Phaser.Keyboard.SHIFT))
+	if (game.input.keyboard.isDown(Phaser.Keyboard.W)&&game.input.keyboard.isDown(Phaser.Keyboard.SHIFT)&&ctr < 5)
     {
-        //game.physics.arcade.velocityFromAngle(card.angle, 300, card.body.velocity);
 		if(velocity < 3100)
 		{
 			velocity += 2;
 		}
 		card.body.thrust(velocity);
+		ctr++;
     }
-	if(velocity >0)
-	{
-		velocity = velocity - (0.1*velocity);
-	}
+	velocity = velocity - (0.5*velocity);
 	game.world.wrap(card, 0, true);
 	eagles.forEach(fly, this, true);
+	ctr--;
 	if (game.input.activePointer.isDown)
     {
         fire();
