@@ -125,6 +125,15 @@ function update() {
 			velocity += 1;
 		}
     }
+	if (game.input.keyboard.isDown(Phaser.Keyboard.W)&&game.input.keyboard.isDown(Phaser.Keyboard.SHIFT))
+    {
+        //game.physics.arcade.velocityFromAngle(card.angle, 300, card.body.velocity);
+		if(velocity < 3100)
+		{
+			velocity += 2;
+		}
+		card.body.thrust(velocity);
+    }
 	if(velocity >0)
 	{
 		velocity -=0.25;
