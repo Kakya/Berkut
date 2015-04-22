@@ -141,7 +141,7 @@ function update() {
 		{
 			ctr++;
 		}
-		if(ctr >=11)
+		if(ctr >=10)
 		{
 			afterReady = false;
 		}
