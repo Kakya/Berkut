@@ -146,7 +146,7 @@ function update() {
 	eagles.forEach(fly, this, true);
 	if(ctr > 0)
 	{
-		ctr--;
+		ctr-=0.25;
 	}
 	if (game.input.activePointer.isDown)
     {
