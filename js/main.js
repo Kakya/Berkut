@@ -46,7 +46,7 @@ function create() {
     game.add.sprite(0, 0, 'backdrop');
     card = game.add.sprite(200, 200, 'card');
 	game.physics.startSystem(Phaser.Physics.P2JS);
-	card.enableBody = true;
+	//card.enableBody = true;
 	//card.body.clearShapes();
 	game.physics.p2.enable(card);
 	card.body.setCircle(44);
@@ -105,17 +105,20 @@ function update() {
 	}
     if (game.input.keyboard.isDown(Phaser.Keyboard.A))
     {
-        card.body.angularAcceleration -= 2500;
+        //card.body.angularAcceleration -= 2500;
+		card.body.rotateLeft(80);
     }
     else if (game.input.keyboard.isDown(Phaser.Keyboard.D))
     {
-        card.body.angularAcceleration += 2500;
+        //card.body.angularAcceleration += 2500;
+		card.body.rotateRight(80);
     }
 
 
     if (game.input.keyboard.isDown(Phaser.Keyboard.W))
     {
-        game.physics.arcade.velocityFromAngle(card.angle, 300, card.body.velocity);
+        //game.physics.arcade.velocityFromAngle(card.angle, 300, card.body.velocity);
+		sprite.body.thrust(400);
     }
 	
 	game.world.wrap(card, 0, true);
