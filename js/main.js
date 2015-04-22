@@ -217,6 +217,6 @@ function render() {
 	game.debug.text('Velocity: ' + velocity, 32, 52);
 	game.debug.body(card);
 	game.debug.text('Afterburner on for: '+ctr, 32, 72);
-	game.debug.text('Controls: W: add thrust. D,S: Roll control. Shift+W: Afterburner. Left mouse click: Fire missile.', 72,32);
+	game.debug.text('Controls: W: add thrust. D,S: Roll control. Shift+W: Afterburner. Left mouse click: Fire missile.', 112,32);
 }
 };
