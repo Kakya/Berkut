@@ -134,11 +134,11 @@ function update() {
 			ctr++;
 		}
 	}
-	if(ctr = 10)
+	if(ctr === 10)
 	{
 		afterReady = false;
 	}
-	if (game.input.keyboard.isDown(Phaser.Keyboard.W) && game.input.keyboard.isDown(Phaser.Keyboard.SHIFT)&&afterReady)
+	if (game.input.keyboard.isDown(Phaser.Keyboard.W) && game.input.keyboard.isDown(Phaser.Keyboard.SHIFT)&&ctr>0)
     {
 		burn();
 		if(velocity < 3100)
@@ -153,14 +153,14 @@ function update() {
 	}
 	game.world.wrap(card, 0, true);
 	eagles.forEach(fly, this, true);
-	if(ctr = 10)
+	if(ctr === 10)
 	{
 		while (ctr > 0)
 		{
 			ctr-=0.25;
 		}
 	}
-	if (ctr = 0)
+	if (ctr === 0)
 	{
 		afterReady = true;
 	}
