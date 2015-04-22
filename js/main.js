@@ -42,6 +42,7 @@ var killedEnemy = 0;
 var stateText;
 var velocity = 0;
 var ctr = 0;
+var afterReady = true;
 function create() {
 	game.physics.startSystem(Phaser.Physics.ARCADE);
     game.world.setBounds(0, 0, 2560, 1600);
@@ -125,9 +126,8 @@ function update() {
 			velocity += 1;
 		}
     }
-	if (game.input.keyboard.isDown(Phaser.Keyboard.W) && game.input.keyboard.isDown(Phaser.Keyboard.SHIFT)&& ctr < 10)
+	if (game.input.keyboard.isDown(Phaser.Keyboard.W) && game.input.keyboard.isDown(Phaser.Keyboard.SHIFT)&& afterReady)
     {
-		ctr += 1;
 		if(velocity < 3100)
 		{
 			velocity += 2;
@@ -137,6 +137,10 @@ function update() {
 	if (game.input.keyboard.isDown(Phaser.Keyboard.W) && game.input.keyboard.isDown(Phaser.Keyboard.SHIFT)&& ctr < 11)
     {
 		ctr += 1;
+		if (ctr = 10)
+		{
+			afterReady = false;
+		}
     }
 	if(velocity > 0 )
 	{
@@ -147,6 +151,10 @@ function update() {
 	if(ctr > 0)
 	{
 		ctr-=0.25;
+		if(ctr = 0)
+		{
+			afterReady = true;
+		}
 	}
 	if (game.input.activePointer.isDown)
     {
