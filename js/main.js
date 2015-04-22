@@ -168,7 +168,7 @@ function update() {
         fire();
     }
 	eagles.forEach(enemyFires, this, true);
-	card.body.velocity.y = 4;
+	card.body.velocity.y = 1;
 }
 function fly(eagle)
 {
@@ -226,6 +226,6 @@ function render() {
 	game.debug.body(card);
 	game.debug.text('Afterburner on for: '+ctr, 32, 92);
 	game.debug.text('Controls: W: add thrust. D,S: Roll control. Shift+W: Afterburner. Left mouse click: Fire missile.', 112,32);
-	game.debug.text('Version 18', 32, 112);
+	game.debug.text('Version 19', 32, 112);
 }
 };
