@@ -134,7 +134,7 @@ function update() {
 			ctr++;
 		}
 	}
-	if(ctr === 10)
+	if(ctr >= 10)
 	{
 		afterReady = false;
 		cool();
