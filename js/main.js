@@ -136,7 +136,7 @@ function update() {
     }
 	if(velocity > 0 )
 	{
-		velocity = velocity - (0.05*velocity);
+		velocity = velocity - (0.01*velocity);
 	}
 	game.world.wrap(card, 0, true);
 	eagles.forEach(fly, this, true);
