@@ -48,7 +48,7 @@ function create() {
     game.world.setBounds(0, 0, 2560, 1600);
     game.add.sprite(0, 0, 'backdrop');
     card = game.add.sprite(200, 200, 'card');
-	game.physics.enable(card, Phaser.Physics.ARCADE);
+	//game.physics.enable(card, Phaser.Physics.ARCADE);
 	game.physics.startSystem(Phaser.Physics.P2JS);
 	card.enableBody = true;
 	//card.body.clearShapes();
@@ -75,7 +75,7 @@ function create() {
 	{
 		var e = eagles.create(card.x+game.rnd.integerInRange(1000,2000), game.world.randomY, 'eagle');
 		e.anchor.setTo(0.5, 0.5);
-		game.physics.enable(e, Phaser.Physics.ARCADE);
+		game.physics.p2.enable(e);
 	}
     cursors = game.input.keyboard.createCursorKeys();
     card.body.maxAngular = 4000;
@@ -172,7 +172,7 @@ function update() {
 function fly(eagle)
 {
 	
-	eagle.body.velocity.x = game.rnd.integerInRange(-100, -300);
+	eagle.body.thrust(game.rnd.integerInRange(-100, -300));
 	eagle.body.velocity.y = 0;
 	game.world.wrap(eagle, 0, true);
 }
@@ -225,6 +225,6 @@ function render() {
 	game.debug.body(card);
 	game.debug.text('Afterburner on for: '+ctr, 32, 92);
 	game.debug.text('Controls: W: add thrust. D,S: Roll control. Shift+W: Afterburner. Left mouse click: Fire missile.', 112,32);
-	game.debug.text('Version 23', 32, 112);
+	game.debug.text('Version 24', 32, 112);
 }
 };
