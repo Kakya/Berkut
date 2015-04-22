@@ -55,12 +55,11 @@ function create() {
 	
 	var playerCollisionGroup = game.physics.p2.createCollisionGroup();
 	var enemyCollisionGroup = game.physics.p2.createCollisionGroup();
-
+	game.physics.p2.enable(card, false);
 	card.enableBody = true;
 	card.physicsBodyType = Phaser.Physics.P2JS;
 	card.body.setCollisionGroup(playerCollisionGroup);
 	//card.body.clearShapes();
-	game.physics.p2.enable(card, false);
 	//card.body.setCircle(44);
 	//card.arcade.body.setSize(20,20,0,0);
 	eagles = game.add.group(); 
