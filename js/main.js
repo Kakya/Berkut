@@ -133,15 +133,15 @@ function update() {
 			velocity += 2;
 		}
 		card.body.thrust(velocity);
+		burn();
     }
-	if (game.input.keyboard.isDown(Phaser.Keyboard.W) && game.input.keyboard.isDown(Phaser.Keyboard.SHIFT)&& ctr < 11)
-    {
-		ctr += 1;
-		if (ctr = 10)
+	function burn()
+	{
+		if (game.input.keyboard.isDown(Phaser.Keyboard.W) && game.input.keyboard.isDown(Phaser.Keyboard.SHIFT)&& ctr < 11)
 		{
-			afterReady = false;
+			ctr ++;
 		}
-    }
+	}
 	if(velocity > 0 )
 	{
 		velocity = velocity - (0.01*velocity);
