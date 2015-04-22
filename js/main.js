@@ -52,11 +52,12 @@ function create() {
 	game.physics.startSystem(Phaser.Physics.P2JS);
 	game.physics.p2.setImpactEvents(true);
 	game.physics.p2.restitution = 0.8;
-	var playerCollGroup = game.physics.p2.createCollisionGroup();
-	var enemyCollGroup = game.physics.p2.createCollisionGroup();
+	var playerCollisionGroup = game.physics.p2.createCollisionGroup();
+	var enemyCollisionGroup = game.physics.p2.createCollisionGroup();
 
 	card.enableBody = true;
-	card.body.setCollisionGroup(playerCollGroup);
+	card.physicsBodyType = Phaser.Physics.P2JS;
+	card.body.setCollisionGroup(playerCollisionGroup);
 	//card.body.clearShapes();
 	game.physics.p2.enable(card);
 	//card.body.setCircle(44);
@@ -65,7 +66,6 @@ function create() {
 	eagles.enableBody = true;
     game.camera.follow(card);
 	card.anchor.setTo(0.5, 0.5);
-	card.physicsBodyType = Phaser.Physics.P2JS;
 	eagles.physicsBodyType = Phaser.Physics.P2JS;
 	
 	bullets = game.add.group();
@@ -106,7 +106,7 @@ function create() {
 }
 
 function update() {
-	game.physics.p2.collide(card, eagles);
+	//game.physics.p2.collide(card, eagles);
     card.body.collides([playerCollGroup, enemyCollGroup]);
 	//game.physics.arcade.overlap(eagles, bullets, kill, null, this);
 	game.physics.arcade.overlap(bullets, eagles, explode, null, this);
