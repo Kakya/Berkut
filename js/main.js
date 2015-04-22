@@ -137,7 +137,7 @@ function update() {
     }
 	function burn()
 	{
-		if (game.input.keyboard.isDown(Phaser.Keyboard.W) && game.input.keyboard.isDown(Phaser.Keyboard.SHIFT)&& ctr < 11)
+		if (ctr < 11)
 		{
 			ctr++;
 		}
@@ -222,6 +222,6 @@ function render() {
 	game.debug.body(card);
 	game.debug.text('Afterburner on for: '+ctr, 32, 92);
 	game.debug.text('Controls: W: add thrust. D,S: Roll control. Shift+W: Afterburner. Left mouse click: Fire missile.', 112,32);
-	game.debug.text('Version 12', 32, 112);
+	game.debug.text('Version 13', 32, 112);
 }
 };
