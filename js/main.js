@@ -45,53 +45,37 @@ var ctr = 0;
 var afterReady = true;
 function create() {
 	game.physics.startSystem(Phaser.Physics.ARCADE);
-    game.world.setBounds(0, 0, 1200, 800);
+    game.world.setBounds(0, 0, 2560, 1600);
     game.add.sprite(0, 0, 'backdrop');
     card = game.add.sprite(200, 200, 'card');
-	//game.physics.enable(card, Phaser.Physics.ARCADE);	
+	//game.physics.enable(card, Phaser.Physics.ARCADE);
 	game.physics.startSystem(Phaser.Physics.P2JS);
-	game.physics.p2.setImpactEvents(true);
-	game.physics.p2.restitution = 0.8;
-	
-	var playerCollisionGroup = game.physics.p2.createCollisionGroup();
-	var enemyCollisionGroup = game.physics.p2.createCollisionGroup();
-	game.physics.p2.enable(card, false);
 	card.enableBody = true;
-	card.physicsBodyType = Phaser.Physics.P2JS;
-	card.body.setCollisionGroup(playerCollisionGroup);
 	//card.body.clearShapes();
+	game.physics.p2.enable(card);
 	//card.body.setCircle(44);
 	//card.arcade.body.setSize(20,20,0,0);
 	eagles = game.add.group(); 
 	eagles.enableBody = true;
     game.camera.follow(card);
 	card.anchor.setTo(0.5, 0.5);
-	eagles.physicsBodyType = Phaser.Physics.P2JS;
-	card.body.setRectangle(200,200);
-	
 	bullets = game.add.group();
     bullets.enableBody = true;
     bullets.physicsBodyType = Phaser.Physics.ARCADE;
 	bullets.createMultiple(2, 'bullet');
     bullets.setAll('checkWorldBounds', true);
     bullets.setAll('outOfBoundsKill', true);
-	
 	eBullets = game.add.group();
     eBullets.enableBody = true;
     eBullets.physicsBodyType = Phaser.Physics.ARCADE;
 	eBullets.createMultiple(2, 'eabullet');
     eBullets.setAll('checkWorldBounds', true);
     eBullets.setAll('outOfBoundsKill', true);
-	game.physics.p2.updateBoundsCollisionGroup();
 	for (var i = 0; i<10; i++)
 	{
 		var e = eagles.create(card.x+game.rnd.integerInRange(1000,2000), game.world.randomY, 'eagle');
-		game.physics.enable(e, Phaser.Physics.ARCADE);
 		e.anchor.setTo(0.5, 0.5);
-		//e.enableBody = true;
-		e.body.setRectangle(200,200);
-		e.body.setCollisionGroup(enemyCollisionGroup);
-		e.body.collides([enemyCollisionGroup, playerCollisionGroup]);
+		e.enableBody = true;
 		game.physics.p2.enable(e);
 	}
     cursors = game.input.keyboard.createCursorKeys();
@@ -105,11 +89,12 @@ function create() {
 	music = game.add.audio('soundOfFreedom');
 
   //  music.play();
-	card.body.collides([playerCollisionGroup, enemyCollisionGroup]);
+
 }
 
 function update() {
-	//game.physics.p2.collide(card, eagles);
+	game.physics.arcade.collide(card, eagles);
+    game.physics.arcade.collide(eagles, eagles);
 	//game.physics.arcade.overlap(eagles, bullets, kill, null, this);
 	game.physics.arcade.overlap(bullets, eagles, explode, null, this);
 	game.physics.arcade.overlap(eBullets, card, pexplode, null, this);
@@ -240,6 +225,6 @@ function render() {
 	game.debug.body(card);
 	game.debug.text('Afterburner on for: '+ctr, 32, 92);
 	game.debug.text('Controls: W: add thrust. D,S: Roll control. Shift+W: Afterburner. Left mouse click: Fire missile.', 112,32);
-	game.debug.text('Version 26', 32, 112);
+	game.debug.text('Version 25', 32, 112);
 }
 };
