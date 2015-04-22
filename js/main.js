@@ -92,8 +92,8 @@ function create() {
 }
 
 function update() {
-	game.physics.arcade.collision(card, eagles, collide());
-    game.physics.arcade.collision(eagles, eagles);
+	game.physics.arcade.collide(card, eagles);
+    game.physics.arcade.collide(eagles, eagles);
 	//game.physics.arcade.overlap(eagles, bullets, kill, null, this);
 	game.physics.arcade.overlap(bullets, eagles, explode, null, this);
 	game.physics.arcade.overlap(eBullets, card, pexplode, null, this);
@@ -225,6 +225,6 @@ function render() {
 	game.debug.body(card);
 	game.debug.text('Afterburner on for: '+ctr, 32, 92);
 	game.debug.text('Controls: W: add thrust. D,S: Roll control. Shift+W: Afterburner. Left mouse click: Fire missile.', 112,32);
-	game.debug.text('Version 21', 32, 112);
+	game.debug.text('Version 22', 32, 112);
 }
 };
