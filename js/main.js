@@ -118,7 +118,7 @@ function update() {
     if (game.input.keyboard.isDown(Phaser.Keyboard.W))
     {
         //game.physics.arcade.velocityFromAngle(card.angle, 300, card.body.velocity);
-		card.body.thrust(10000);
+		card.body.velocity+=10000;
     }
 	
 	game.world.wrap(card, 0, true);
