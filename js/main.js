@@ -153,12 +153,9 @@ function update() {
 	}
 	game.world.wrap(card, 0, true);
 	eagles.forEach(fly, this, true);
-	if(ctr === 10)
+	if(ctr >11)
 	{
-		while (ctr > 0)
-		{
-			ctr-=0.25;
-		}
+		ctr-=0.25;
 	}
 	if (ctr === 0)
 	{
