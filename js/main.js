@@ -140,16 +140,13 @@ function update() {
 	}
 	if (game.input.keyboard.isDown(Phaser.Keyboard.W) && game.input.keyboard.isDown(Phaser.Keyboard.SHIFT))
     {
-		if(afterReady)
+		burn();
+		if(velocity < 3100)
 		{
-			burn();
-			if(velocity < 3100)
-			{
-				velocity += 2;
-			}
-			card.body.thrust(velocity);
+			velocity += 2;
 		}
-    }
+		card.body.thrust(velocity);
+	}
 	if(velocity > 0 )
 	{
 		velocity = velocity - (0.01*velocity);
@@ -159,10 +156,6 @@ function update() {
 	if(ctr > 0)
 	{
 		ctr-=0.25;
-		if(ctr = 0)
-		{
-			afterReady = true;
-		}
 	}
 	if (game.input.activePointer.isDown)
     {
@@ -225,6 +218,6 @@ function render() {
 	game.debug.body(card);
 	game.debug.text('Afterburner on for: '+ctr, 32, 92);
 	game.debug.text('Controls: W: add thrust. D,S: Roll control. Shift+W: Afterburner. Left mouse click: Fire missile.', 112,32);
-	game.debug.text('Version 25', 32, 112);
+	game.debug.text('Version 26', 32, 112);
 }
 };
