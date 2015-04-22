@@ -88,7 +88,7 @@ function create() {
 		game.physics.enable(e, Phaser.Physics.ARCADE);
 		e.anchor.setTo(0.5, 0.5);
 		//e.enableBody = true;
-		e.body.setCollisionGroup(enemyCollGroup);
+		e.body.setCollisionGroup(enemyCollisionGroup);
 		game.physics.p2.enable(e);
 	}
     cursors = game.input.keyboard.createCursorKeys();
@@ -107,7 +107,7 @@ function create() {
 
 function update() {
 	//game.physics.p2.collide(card, eagles);
-    card.body.collides([playerCollGroup, enemyCollGroup]);
+    card.body.collides([playerCollisionGroup, enemyCollisionGroup]);
 	//game.physics.arcade.overlap(eagles, bullets, kill, null, this);
 	game.physics.arcade.overlap(bullets, eagles, explode, null, this);
 	game.physics.arcade.overlap(eBullets, card, pexplode, null, this);
