@@ -156,7 +156,7 @@ function update() {
 	eagles.forEach(fly, this, true);
 	function cool()
 	{
-		if(ctr > 0)
+		while(ctr > 0)
 		{
 			ctr-=0.025;
 		}
