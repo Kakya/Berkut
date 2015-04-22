@@ -45,9 +45,12 @@ function create() {
     game.world.setBounds(0, 0, 2560, 1600);
     game.add.sprite(0, 0, 'backdrop');
     card = game.add.sprite(200, 200, 'card');
-	card.enableBody = true;
+	game.physics.startSystem(Phaser.Physics.P2JS);
+	//card.enableBody = true;
 	//card.body.clearShapes();
-	card.arcade.body.setSize(20,20,0,0);
+	game.physics.p2.enable(card);
+	card.body.setCircle(44);
+	//card.arcade.body.setSize(20,20,0,0);
 	eagles = game.add.group(); 
 	eagles.enableBody = true;
     game.camera.follow(card);
