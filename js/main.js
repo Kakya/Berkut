@@ -110,12 +110,12 @@ function update() {
     if (game.input.keyboard.isDown(Phaser.Keyboard.A))
     {
         //card.body.angularAcceleration -= 2500;
-		card.body.rotateLeft(40);
+		card.body.rotateLeft(40+(0.01*velocity));
     }
     else if (game.input.keyboard.isDown(Phaser.Keyboard.D))
     {
         //card.body.angularAcceleration += 2500;
-		card.body.rotateRight(40);
+		card.body.rotateRight(40+(0.01*velocity));
     }
 
 
