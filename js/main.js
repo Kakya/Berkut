@@ -48,6 +48,7 @@ function create() {
     game.world.setBounds(0, 0, 2560, 1600);
     game.add.sprite(0, 0, 'backdrop');
     card = game.add.sprite(200, 200, 'card');
+	game.physics.enable(card, Phaser.Physics.ARCADE);
 	game.physics.startSystem(Phaser.Physics.P2JS);
 	card.enableBody = true;
 	//card.body.clearShapes();
@@ -70,7 +71,6 @@ function create() {
 	eBullets.createMultiple(2, 'eabullet');
     eBullets.setAll('checkWorldBounds', true);
     eBullets.setAll('outOfBoundsKill', true);
-    game.physics.enable(card, Phaser.Physics.ARCADE);
 	for (var i = 0; i<10; i++)
 	{
 		var e = eagles.create(card.x+game.rnd.integerInRange(1000,2000), game.world.randomY, 'eagle');
