@@ -40,6 +40,7 @@ var enextFire = 0;
 var eBullets;
 var killedEnemy = 0;
 var stateText;
+var velocity = 10000;
 function create() {
 	game.physics.startSystem(Phaser.Physics.ARCADE);
     game.world.setBounds(0, 0, 2560, 1600);
@@ -118,7 +119,8 @@ function update() {
     if (game.input.keyboard.isDown(Phaser.Keyboard.W))
     {
         //game.physics.arcade.velocityFromAngle(card.angle, 300, card.body.velocity);
-		card.body.velocity.x+=100;
+		card.body.thrust(velocity);
+		velocity += 10000;
     }
 	
 	game.world.wrap(card, 0, true);
