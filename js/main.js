@@ -126,15 +126,6 @@ function update() {
 			velocity += 1;
 		}
     }
-	if (game.input.keyboard.isDown(Phaser.Keyboard.W) && game.input.keyboard.isDown(Phaser.Keyboard.SHIFT)&& afterReady)
-    {
-		if(velocity < 3100)
-		{
-			velocity += 2;
-		}
-		card.body.thrust(velocity);
-		burn();
-    }
 	function burn()
 	{
 		if (ctr < 11)
@@ -146,6 +137,18 @@ function update() {
 			afterReady = false;
 		}
 	}
+	if (game.input.keyboard.isDown(Phaser.Keyboard.W) && game.input.keyboard.isDown(Phaser.Keyboard.SHIFT))
+    {
+		if(afterReady)
+		{
+			if(velocity < 3100)
+			{
+				velocity += 2;
+			}
+			card.body.thrust(velocity);
+			burn();
+		}
+    }
 	if(velocity > 0 )
 	{
 		velocity = velocity - (0.01*velocity);
