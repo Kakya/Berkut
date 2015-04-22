@@ -40,7 +40,7 @@ var enextFire = 0;
 var eBullets;
 var killedEnemy = 0;
 var stateText;
-var velocity = 1000;
+var velocity = 0;
 function create() {
 	game.physics.startSystem(Phaser.Physics.ARCADE);
     game.world.setBounds(0, 0, 2560, 1600);
