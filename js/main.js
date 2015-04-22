@@ -94,8 +94,8 @@ function update() {
 	//game.physics.arcade.overlap(eagles, bullets, kill, null, this);
 	game.physics.arcade.overlap(bullets, eagles, explode, null, this);
 	game.physics.arcade.overlap(eBullets, card, pexplode, null, this);
-    card.body.velocity.x = 0;
-    card.body.velocity.y = 0;
+    //card.body.velocity.x = 0;
+    //card.body.velocity.y = 0;
     card.body.angularVelocity = 0;
 
     card.body.angularAcceleration = 0;
