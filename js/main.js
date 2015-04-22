@@ -86,13 +86,13 @@ function create() {
 	for (var i = 0; i<10; i++)
 	{
 		var e = eagles.create(card.x+game.rnd.integerInRange(1000,2000), game.world.randomY, 'eagle');
-		game.physics.enable(e, Phaser.Physics.ARCADE);
-		e.anchor.setTo(0.5, 0.5);
+		//game.physics.enable(e, Phaser.Physics.ARCADE);
+		//e.anchor.setTo(0.5, 0.5);
 		//e.enableBody = true;
 		e.body.setRectangle(200,200);
 		e.body.setCollisionGroup(enemyCollisionGroup);
 		e.body.collides([enemyCollisionGroup, playerCollisionGroup]);
-		game.physics.p2.enable(e);
+		//game.physics.p2.enable(e);
 	}
     cursors = game.input.keyboard.createCursorKeys();
     card.body.maxAngular = 4000;
@@ -105,7 +105,7 @@ function create() {
 	music = game.add.audio('soundOfFreedom');
 
   //  music.play();
-	card.body.collides([playerCollisionGroup, enemyCollisionGroup]);
+	//card.body.collides([playerCollisionGroup, enemyCollisionGroup]);
 }
 
 function update() {
