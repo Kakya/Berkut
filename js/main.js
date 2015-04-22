@@ -49,8 +49,13 @@ function create() {
     game.add.sprite(0, 0, 'backdrop');
     card = game.add.sprite(200, 200, 'card');
 	//game.physics.enable(card, Phaser.Physics.ARCADE);
+	
+	var playerCollGroup = game.physics.p2.createCollisionGroup();
+	var enemyCollGroup = game.physics.p2.createCollisionGroup();
+	
 	game.physics.startSystem(Phaser.Physics.P2JS);
 	card.enableBody = true;
+	card.body.setCollisionGroup(playerCollGroup);
 	//card.body.clearShapes();
 	game.physics.p2.enable(card);
 	//card.body.setCircle(44);
@@ -59,23 +64,30 @@ function create() {
 	eagles.enableBody = true;
     game.camera.follow(card);
 	card.anchor.setTo(0.5, 0.5);
+	card.physicsBodyType = Phaser.Physics.P2JS;
+	eagles.physicsBodyType = Phaser.Physics.P2JS;
+	
 	bullets = game.add.group();
     bullets.enableBody = true;
     bullets.physicsBodyType = Phaser.Physics.ARCADE;
 	bullets.createMultiple(2, 'bullet');
     bullets.setAll('checkWorldBounds', true);
     bullets.setAll('outOfBoundsKill', true);
+	
 	eBullets = game.add.group();
     eBullets.enableBody = true;
     eBullets.physicsBodyType = Phaser.Physics.ARCADE;
 	eBullets.createMultiple(2, 'eabullet');
     eBullets.setAll('checkWorldBounds', true);
     eBullets.setAll('outOfBoundsKill', true);
+	
 	for (var i = 0; i<10; i++)
 	{
 		var e = eagles.create(card.x+game.rnd.integerInRange(1000,2000), game.world.randomY, 'eagle');
+		game.physics.enable(e, Phaser.Physics.ARCADE);
 		e.anchor.setTo(0.5, 0.5);
-		e.enableBody = true;
+		//e.enableBody = true;
+		e.body.setCollisionGroup(enemyCollGroup);
 		game.physics.p2.enable(e);
 	}
     cursors = game.input.keyboard.createCursorKeys();
@@ -93,8 +105,8 @@ function create() {
 }
 
 function update() {
-	game.physics.arcade.collide(card, eagles);
-    game.physics.arcade.collide(eagles, eagles);
+	game.physics.p2.collide(card, eagles);
+    card.body.collides([playerCollGroup, enemyCollGroup]);
 	//game.physics.arcade.overlap(eagles, bullets, kill, null, this);
 	game.physics.arcade.overlap(bullets, eagles, explode, null, this);
 	game.physics.arcade.overlap(eBullets, card, pexplode, null, this);
@@ -225,6 +237,6 @@ function render() {
 	game.debug.body(card);
 	game.debug.text('Afterburner on for: '+ctr, 32, 92);
 	game.debug.text('Controls: W: add thrust. D,S: Roll control. Shift+W: Afterburner. Left mouse click: Fire missile.', 112,32);
-	game.debug.text('Version 25', 32, 112);
+	game.debug.text('Version 26', 32, 112);
 }
 };
