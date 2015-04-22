@@ -133,12 +133,12 @@ function update() {
 		{
 			ctr=ctr+1;
 		}
-		if(ctr >=10)
-		{
-			afterReady = false;
-		}
 	}
-	if (game.input.keyboard.isDown(Phaser.Keyboard.W) && game.input.keyboard.isDown(Phaser.Keyboard.SHIFT)&&ctr<10)
+	if(ctr >=10)
+	{
+		afterReady = false;
+	}
+	if (game.input.keyboard.isDown(Phaser.Keyboard.W) && game.input.keyboard.isDown(Phaser.Keyboard.SHIFT)&&afterReady)
     {
 		burn();
 		if(velocity < 3100)
@@ -156,6 +156,10 @@ function update() {
 	if(ctr > 0)
 	{
 		ctr-=0.25;
+	}
+	if (ctr = 0)
+	{
+		afterReady = true;
 	}
 	if (game.input.activePointer.isDown)
     {
