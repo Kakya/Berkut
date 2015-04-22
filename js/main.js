@@ -48,12 +48,13 @@ function create() {
     game.world.setBounds(0, 0, 2560, 1600);
     game.add.sprite(0, 0, 'backdrop');
     card = game.add.sprite(200, 200, 'card');
-	//game.physics.enable(card, Phaser.Physics.ARCADE);
-	
+	//game.physics.enable(card, Phaser.Physics.ARCADE);	
+	game.physics.startSystem(Phaser.Physics.P2JS);
+	game.physics.p2.setImpactEvents(true);
+	game.physics.p2.restitution = 0.8;
 	var playerCollGroup = game.physics.p2.createCollisionGroup();
 	var enemyCollGroup = game.physics.p2.createCollisionGroup();
-	
-	game.physics.startSystem(Phaser.Physics.P2JS);
+
 	card.enableBody = true;
 	card.body.setCollisionGroup(playerCollGroup);
 	//card.body.clearShapes();
