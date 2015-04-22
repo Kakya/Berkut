@@ -138,7 +138,7 @@ function update() {
 	{
 		afterReady = false;
 	}
-	if (game.input.keyboard.isDown(Phaser.Keyboard.W) && game.input.keyboard.isDown(Phaser.Keyboard.SHIFT)&&ctr>0)
+	if (game.input.keyboard.isDown(Phaser.Keyboard.W) && game.input.keyboard.isDown(Phaser.Keyboard.SHIFT)&&afterReady)
     {
 		burn();
 		if(velocity < 3100)
@@ -200,7 +200,6 @@ function fire()
         nextFire = game.time.now + fireRate;
 
         var bullet = bullets.getFirstDead();
-
         bullet.reset(card.x - 8, card.y - 8);
 		bullet.body.velocity.x=600;
 		bullet.body.velocity.y=9.8;
