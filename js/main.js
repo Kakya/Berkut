@@ -52,6 +52,7 @@ function create() {
 	game.physics.startSystem(Phaser.Physics.P2JS);
 	game.physics.p2.setImpactEvents(true);
 	game.physics.p2.restitution = 0.8;
+	
 	var playerCollisionGroup = game.physics.p2.createCollisionGroup();
 	var enemyCollisionGroup = game.physics.p2.createCollisionGroup();
 
@@ -59,7 +60,7 @@ function create() {
 	card.physicsBodyType = Phaser.Physics.P2JS;
 	card.body.setCollisionGroup(playerCollisionGroup);
 	//card.body.clearShapes();
-	game.physics.p2.enable(card);
+	game.physics.p2.enable(card, false);
 	//card.body.setCircle(44);
 	//card.arcade.body.setSize(20,20,0,0);
 	eagles = game.add.group(); 
