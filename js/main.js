@@ -125,7 +125,7 @@ function update() {
 			velocity += 1;
 		}
     }
-	if (game.input.keyboard.isDown(Phaser.Keyboard.W) && game.input.keyboard.isDown(Phaser.Keyboard.SHIFT)&& ctr < 4)
+	if (game.input.keyboard.isDown(Phaser.Keyboard.W) && game.input.keyboard.isDown(Phaser.Keyboard.SHIFT)&& ctr < 10)
     {
 		ctr += 1;
 		if(velocity < 3100)
@@ -134,7 +134,7 @@ function update() {
 		}
 		card.body.thrust(velocity);
     }
-	if (game.input.keyboard.isDown(Phaser.Keyboard.W) && game.input.keyboard.isDown(Phaser.Keyboard.SHIFT)&& ctr < 5)
+	if (game.input.keyboard.isDown(Phaser.Keyboard.W) && game.input.keyboard.isDown(Phaser.Keyboard.SHIFT)&& ctr < 11)
     {
 		ctr += 1;
     }
