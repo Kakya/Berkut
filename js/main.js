@@ -67,7 +67,7 @@ function create() {
     game.camera.follow(card);
 	card.anchor.setTo(0.5, 0.5);
 	eagles.physicsBodyType = Phaser.Physics.P2JS;
-	card.body.setRectangle(20,20);
+	card.body.setRectangle(200,200);
 	
 	bullets = game.add.group();
     bullets.enableBody = true;
@@ -89,7 +89,7 @@ function create() {
 		game.physics.enable(e, Phaser.Physics.ARCADE);
 		e.anchor.setTo(0.5, 0.5);
 		//e.enableBody = true;
-		e.body.setRectangle(20,20);
+		e.body.setRectangle(200,200);
 		e.body.setCollisionGroup(enemyCollisionGroup);
 		e.body.collides([enemyCollisionGroup, playerCollisionGroup]);
 		game.physics.p2.enable(e);
