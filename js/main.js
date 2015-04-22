@@ -102,12 +102,11 @@ function create() {
 	music = game.add.audio('soundOfFreedom');
 
   //  music.play();
-
+	card.body.collides([playerCollisionGroup, enemyCollisionGroup]);
 }
 
 function update() {
 	//game.physics.p2.collide(card, eagles);
-    card.body.collides([playerCollisionGroup, enemyCollisionGroup]);
 	//game.physics.arcade.overlap(eagles, bullets, kill, null, this);
 	game.physics.arcade.overlap(bullets, eagles, explode, null, this);
 	game.physics.arcade.overlap(eBullets, card, pexplode, null, this);
