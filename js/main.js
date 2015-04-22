@@ -141,12 +141,12 @@ function update() {
     {
 		if(afterReady)
 		{
+			burn();
 			if(velocity < 3100)
 			{
 				velocity += 2;
 			}
 			card.body.thrust(velocity);
-			burn();
 		}
     }
 	if(velocity > 0 )
