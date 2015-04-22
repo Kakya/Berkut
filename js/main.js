@@ -120,9 +120,9 @@ function update() {
     {
         //game.physics.arcade.velocityFromAngle(card.angle, 300, card.body.velocity);
 		card.body.thrust(velocity);
-		velocity += 50;
+		velocity += 5;
     }
-	
+	velocity -=1;
 	game.world.wrap(card, 0, true);
 	eagles.forEach(fly, this, true);
 	if (game.input.activePointer.isDown)
