@@ -172,7 +172,7 @@ function update() {
 }
 function fly(eagle)
 {
-	eagle.body.thrust(game.rnd.integerInRange(-100, -300));
+	eagle.body.velocity.x = game.rnd.integerInRange(-100, -300);
 	eagle.body.velocity.y = 0;
 	game.world.wrap(eagle, 0, true);
 }
