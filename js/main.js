@@ -130,7 +130,7 @@ function update() {
 	{
 		if (ctr < 11)
 		{
-			ctr++;
+			ctr=ctr+1;
 		}
 		if(ctr >=10)
 		{
