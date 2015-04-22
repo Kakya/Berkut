@@ -168,7 +168,6 @@ function update() {
         fire();
     }
 	eagles.forEach(enemyFires, this, true);
-	card.body.velocity.y = 0.5;
 }
 function fly(eagle)
 {
