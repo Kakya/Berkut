@@ -158,7 +158,7 @@ function update() {
 	{
 		while(ctr > 0)
 		{
-			ctr-=0.025;
+			ctr-=0.00025;
 		}
 	}
 	if (ctr <= 0)
@@ -225,6 +225,6 @@ function render() {
 	game.debug.body(card);
 	game.debug.text('Afterburner on for: '+ctr, 32, 92);
 	game.debug.text('Controls: W: add thrust. D,S: Roll control. Shift+W: Afterburner. Left mouse click: Fire missile.', 112,32);
-	game.debug.text('Version 38', 32, 112);
+	game.debug.text('Version 39', 32, 112);
 }
 };
