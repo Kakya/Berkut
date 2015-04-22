@@ -131,10 +131,10 @@ function update() {
 	{
 		if (ctr < 11)
 		{
-			ctr=ctr+1;
+			ctr++;
 		}
 	}
-	if(ctr >=10)
+	if(ctr = 10)
 	{
 		afterReady = false;
 	}
@@ -153,9 +153,12 @@ function update() {
 	}
 	game.world.wrap(card, 0, true);
 	eagles.forEach(fly, this, true);
-	if(ctr > 0)
+	if(ctr = 10)
 	{
-		ctr-=0.25;
+		while (ctr > 0)
+		{
+			ctr-=0.25;
+		}
 	}
 	if (ctr = 0)
 	{
