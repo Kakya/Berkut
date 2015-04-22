@@ -134,7 +134,7 @@ function update() {
 		card.body.thrust(velocity);
 		ctr++;
     }
-	velocity = velocity - (0.25*velocity);
+	velocity = velocity - (0.2*velocity);
 	game.world.wrap(card, 0, true);
 	eagles.forEach(fly, this, true);
 	ctr--;
@@ -198,5 +198,6 @@ function render() {
 	game.debug.text('Planes killed: ' + killedEnemy, 32, 32);
 	game.debug.text('Velocity: ' + velocity, 32, 52);
 	game.debug.body(card);
+	game.debug.text('Afterburner on for: '+ctr, 32, 72);
 }
 };
