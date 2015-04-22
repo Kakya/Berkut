@@ -139,7 +139,11 @@ function update() {
 	{
 		if (game.input.keyboard.isDown(Phaser.Keyboard.W) && game.input.keyboard.isDown(Phaser.Keyboard.SHIFT)&& ctr < 11)
 		{
-			ctr ++;
+			ctr++;
+		}
+		if(ctr <=10)
+		{
+			afterReady = false;
 		}
 	}
 	if(velocity > 0 )
