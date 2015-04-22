@@ -49,10 +49,10 @@ function create() {
     game.add.sprite(0, 0, 'backdrop');
     card = game.add.sprite(200, 200, 'card');
 	game.physics.startSystem(Phaser.Physics.P2JS);
-	//card.enableBody = true;
+	card.enableBody = true;
 	//card.body.clearShapes();
 	game.physics.p2.enable(card);
-	card.body.setCircle(44);
+	//card.body.setCircle(44);
 	//card.arcade.body.setSize(20,20,0,0);
 	eagles = game.add.group(); 
 	eagles.enableBody = true;
