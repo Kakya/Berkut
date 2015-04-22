@@ -92,8 +92,8 @@ function create() {
 }
 
 function update() {
-	game.physics.arcade.overlap(card, eagles, collide());
-    game.physics.arcade.overlap(eagles, eagles);
+	game.physics.arcade.collision(card, eagles, collide());
+    game.physics.arcade.collision(eagles, eagles);
 	//game.physics.arcade.overlap(eagles, bullets, kill, null, this);
 	game.physics.arcade.overlap(bullets, eagles, explode, null, this);
 	game.physics.arcade.overlap(eBullets, card, pexplode, null, this);
