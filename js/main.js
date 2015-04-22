@@ -134,10 +134,16 @@ function update() {
 		card.body.thrust(velocity);
 		ctr++;
     }
-	velocity = velocity - (0.2*velocity);
+	if(velocity > 0 )
+	{
+		velocity = velocity - (0.2*velocity);
+	}
 	game.world.wrap(card, 0, true);
 	eagles.forEach(fly, this, true);
-	ctr--;
+	if(ctr > 0)
+	{
+		ctr--;
+	}
 	if (game.input.activePointer.isDown)
     {
         fire();
