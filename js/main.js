@@ -122,10 +122,13 @@ function update() {
 		card.body.thrust(velocity);
 		if(velocity < 3000)
 		{
-			velocity += 5;
+			velocity += 1;
 		}
     }
-	velocity -=1;
+	if(velocity >0)
+	{
+		velocity -=0.25;
+	}
 	game.world.wrap(card, 0, true);
 	eagles.forEach(fly, this, true);
 	if (game.input.activePointer.isDown)
