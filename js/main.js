@@ -134,7 +134,7 @@ function kill(eagle)
 }
 function explode(bullet, eagle)
 {
-	bullet.kill();
+	bullet.kill();d
 	eagle.kill();
 	killedEnemy++;
 }
@@ -173,6 +173,6 @@ function enemyFires(eagle)
 }
 function render() {
 	game.debug.text('Planes killed: ' + killedEnemy, 32, 32);
-	game.debug.sprite(eagle);
+	game.debug.bodyInfo(eagle);
 }
 };
