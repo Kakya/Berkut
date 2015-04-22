@@ -138,7 +138,7 @@ function update() {
 			afterReady = false;
 		}
 	}
-	if (game.input.keyboard.isDown(Phaser.Keyboard.W) && game.input.keyboard.isDown(Phaser.Keyboard.SHIFT))
+	if (game.input.keyboard.isDown(Phaser.Keyboard.W) && game.input.keyboard.isDown(Phaser.Keyboard.SHIFT)&&ctr<10)
     {
 		burn();
 		if(velocity < 3100)
