@@ -222,6 +222,7 @@ function enemyFires(eagle)
 function render() {
 	game.debug.text('Planes killed: ' + killedEnemy, 32, 52);
 	game.debug.text('Velocity: ' + velocity, 32, 72);
+	game.debug.text('Altitude: m'+card.body.position.y, 32, 92);
 	game.debug.text('Controls: W: add thrust. D,S: Roll control. Shift+W: Afterburner. Left mouse click: Fire missile.', 112,32);
 	game.debug.text('Version 39', 32, 112);
 }
