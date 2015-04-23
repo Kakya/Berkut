@@ -71,7 +71,7 @@ function create() {
 	eBullets.createMultiple(2, 'eabullet');
     eBullets.setAll('checkWorldBounds', true);
     eBullets.setAll('outOfBoundsKill', true);
-	for (var i = 0; i<10; i++)
+	for (var i = 0; i<0; i++)
 	{
 		var e = eagles.create(card.x+game.rnd.integerInRange(1000,2000), game.world.randomY, 'eagle');
 		e.anchor.setTo(0.5, 0.5);
@@ -124,7 +124,7 @@ function update() {
 		card.body.thrust(velocity);
 		if(velocity < 3000)
 		{
-			velocity += 1;
+			velocity += (1+(card.body.angle*-0.01));
 		}
     }
 	function burn()
@@ -144,7 +144,7 @@ function update() {
 		burn();
 		if(velocity < 3100)
 		{
-			velocity += 2;
+			velocity += (2(card.body.angle*-0.01));
 		}
 		card.body.thrust(velocity);
 	}
@@ -222,7 +222,7 @@ function enemyFires(eagle)
 function render() {
 	game.debug.text('Planes killed: ' + killedEnemy, 32, 52);
 	game.debug.text('Velocity: ' + velocity, 32, 72);
-	game.debug.text('Altitude: m'+card.body.y, 32, 92);
+	game.debug.text('Altitude: '+card.body.y+"m", 32, 92);
 	game.debug.text('Controls: W: add thrust. D,S: Roll control. Shift+W: Afterburner. Left mouse click: Fire missile.', 112,32);
 	game.debug.text('Version 39', 32, 112);
 }
