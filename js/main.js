@@ -85,10 +85,10 @@ function create() {
 	
     music = game.add.audio('Musik');
 
-   // music.play();
+    music.play();
 	music = game.add.audio('soundOfFreedom');
 
-  //  music.play();
+   music.play();
 
 }
 
