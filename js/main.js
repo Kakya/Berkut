@@ -144,7 +144,7 @@ function update() {
 		burn();
 		if(velocity < 3100)
 		{
-			velocity += (2(card.body.angle*-0.01));
+			velocity += (2+(card.body.angle*-0.01));
 		}
 		card.body.thrust(velocity);
 	}
